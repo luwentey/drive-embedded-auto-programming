@@ -1,0 +1,21 @@
+/**
+ * @file motor_pwm.c
+ * @brief PWM 初始化骨架 — 自动生成，需对接具体 HAL
+ */
+#include "drive_config.h"
+
+/* TODO: 包含目标 MCU 的 TIM/PWM HAL 头文件 */
+
+void motor_pwm_init(void)
+{
+    /* PWM 频率: {{ cfg.pwm.frequency_hz }} Hz, 死区: {{ cfg.pwm.dead_time_ns }} ns */
+    /* 在此配置 TIM 周期、互补通道、死区寄存器等 */
+}
+
+void motor_pwm_set_duty(float duty_u, float duty_v, float duty_w)
+{
+    (void)duty_u;
+    (void)duty_v;
+    (void)duty_w;
+    /* 限幅 0..1 后写入 CCR */
+}
