@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drive-embedded-codegen"
+version = "0.1.0"
+description = "驱动器嵌入式软件自动编程 — 参数化生成电机驱动固件代码"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "pyyaml>=6.0",
+    "jinja2>=3.1",
+]
+
+[project.scripts]
+drive-codegen = "drive_codegen.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
