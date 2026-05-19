@@ -1,0 +1,25 @@
+/**
+ * @file drive_config.h
+ * @brief 自动生成 — {{ project_name }}
+ * @note 请勿手改；修改 configs/*.yaml 后重新运行 drive-codegen
+ */
+#ifndef DRIVE_CONFIG_H
+#define DRIVE_CONFIG_H
+
+#define DRIVE_MCU_NAME              "{{ cfg.project.mcu }}"
+#define DRIVE_PWM_FREQ_HZ           ({{ cfg.pwm.frequency_hz }}u)
+#define DRIVE_PWM_DEADTIME_NS       ({{ cfg.pwm.dead_time_ns }}u)
+
+#define DRIVE_MOTOR_POLES           ({{ cfg.motor.poles }}u)
+#define DRIVE_MOTOR_RATED_CURRENT_A ({{ cfg.motor.rated_current_a }}f)
+#define DRIVE_MOTOR_MAX_CURRENT_A   ({{ cfg.motor.max_current_a }}f)
+#define DRIVE_MOTOR_RATED_RPM       ({{ cfg.motor.rated_rpm }}u)
+
+#define DRIVE_LOOP_HZ               ({{ cfg.control.loop_hz }}u)
+#define DRIVE_ENABLE_FOC            ({{ 1 if cfg.control.enable_foc else 0 }})
+
+#define DRIVE_ADC_BITS              ({{ cfg.sampling.adc.resolution_bits }}u)
+#define DRIVE_ADC_VREF_V            ({{ cfg.sampling.adc.vref_v }}f)
+#define DRIVE_AMP_GAIN              ({{ cfg.sampling.amplifier_gain }}f)
+
+#endif /* DRIVE_CONFIG_H */
