@@ -1,0 +1,24 @@
+/**
+ * @file current_sense.h
+ * @brief 电流采样参数 — 自动生成
+ */
+#ifndef CURRENT_SENSE_H
+#define CURRENT_SENSE_H
+
+#include "drive_config.h"
+
+/* Shunt: {{ "%.3f"|format(shunt.resistance_mohm) }} mΩ, P >= {{ "%.2f"|format(shunt.power_w) }} W */
+#define CSENSE_RSHUNT_OHM           ({{ shunt.resistance_ohm }}f)
+#define CSENSE_FULLSCALE_V          ({{ shunt.sense_voltage_v }}f)
+#define CSENSE_MAX_CURRENT_A        ({{ shunt.max_current_a }}f)
+
+/* ADC 满量程对应电流 (A)，含放大器增益 */
+#define CSENSE_ADC_COUNTS_MAX       ((1u << DRIVE_ADC_BITS) - 1u)
+#define CSENSE_AMPS_PER_COUNT       (CSENSE_MAX_CURRENT_A / (float)CSENSE_ADC_COUNTS_MAX)
+
+static inline float current_sense_counts_to_amps(uint16_t raw)
+{
+    return (float)raw * CSENSE_AMPS_PER_COUNT;
+}
+
+#endif /* CURRENT_SENSE_H */
