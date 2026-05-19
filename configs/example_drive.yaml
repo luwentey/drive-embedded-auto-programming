@@ -1,0 +1,32 @@
+# 驱动器示例配置 — 用于自动生成嵌入式 C 代码
+
+project:
+  name: example_motor_drive
+  mcu: STM32G474
+  toolchain: gcc
+
+motor:
+  poles: 4
+  rated_current_a: 10.0
+  max_current_a: 20.0
+  rated_rpm: 3000
+
+pwm:
+  frequency_hz: 20000
+  dead_time_ns: 500
+
+sampling:
+  # 电流采样：低侧 shunt + 运放/CSA
+  shunt:
+    target_sense_voltage_mv: 100   # 满量程期望采样电压 (mV)
+    # 阻值与功耗由工具根据 max_current 自动计算，也可手动覆盖：
+    # resistance_mohm: 5
+    # power_w: 5
+  adc:
+    resolution_bits: 12
+    vref_v: 3.3
+  amplifier_gain: 20              # 电流检测放大器增益
+
+control:
+  loop_hz: 10000                  # 电流环执行频率
+  enable_foc: true
